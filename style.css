@@ -1,0 +1,249 @@
+
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px 0;
+}
+.container {
+    max-width: 900px;
+}
+.card {
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    border: none;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.95);
+}
+.card-header {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: white;
+    border-radius: 20px 20px 0 0 !important;
+    font-weight: 600;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+.card-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 60%);
+    transform: rotate(30deg);
+}
+.card-header h3 {
+    position: relative;
+    z-index: 1;
+}
+.card-body {
+    padding: 30px;
+}
+.btn-primary {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    border: none;
+    box-shadow: 0 4px 15px rgba(37, 117, 252, 0.4);
+    transition: all 0.3s ease;
+}
+.btn-primary:hover {
+    background: linear-gradient(135deg, #5b0fb3 0%, #1e68e6 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 117, 252, 0.5);
+}
+.btn-success {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    border: none;
+    box-shadow: 0 4px 15px rgba(17, 153, 142, 0.4);
+    transition: all 0.3s ease;
+}
+.btn-success:hover {
+    background: linear-gradient(135deg, #0e8a81 0%, #32d871 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(17, 153, 142, 0.5);
+}
+.btn-danger {
+    background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+    border: none;
+    box-shadow: 0 4px 15px rgba(255, 65, 108, 0.4);
+    transition: all 0.3s ease;
+}
+.btn-danger:hover {
+    background: linear-gradient(135deg, #f03a61 0%, #f04324 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 65, 108, 0.5);
+}
+.btn-info {
+    background: linear-gradient(135deg, #0072ff 0%, #00c6ff 100%);
+    border: none;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 114, 255, 0.4);
+    transition: all 0.3s ease;
+}
+.btn-info:hover {
+    background: linear-gradient(135deg, #0066e8 0%, #00b3e6 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 114, 255, 0.5);
+    color: white;
+}
+.form-control {
+    border-radius: 15px;
+    padding: 12px 20px;
+    border: 2px solid #e9ecef;
+    transition: all 0.3s ease;
+    background-color: #f8f9fa;
+}
+.form-control:focus {
+    box-shadow: 0 0 0 0.25rem rgba(106, 17, 203, 0.25);
+    border-color: #6a11cb;
+    background-color: #fff;
+}
+.form-label {
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 8px;
+}
+.medication-row {
+    background-color: #f8f9fa;
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+    border: 2px solid #e9ecef;
+    position: relative;
+}
+.medication-row:hover {
+    background-color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    border-color: #d1d7dc;
+}
+.form-section {
+    padding: 20px;
+    border-radius: 15px;
+    background-color: white;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+.form-section:hover {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+.modal-header {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: white;
+}
+.modal-content {
+    border-radius: 20px;
+    border: none;
+    overflow: hidden;
+}
+.btn-floating {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    font-size: 24px;
+    line-height: 60px;
+    z-index: 1000;
+}
+.remove-row {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.section-icon {
+    font-size: 2rem;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 15px;
+}
+.btn {
+    border-radius: 15px;
+    padding: 12px 25px;
+    font-weight: 600;
+}
+.btn-lg {
+    padding: 15px 30px;
+}
+.pill-badge {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: white;
+    border-radius: 20px;
+    padding: 5px 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+.decoration-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(106, 17, 203, 0.1) 0%, rgba(37, 117, 252, 0.1) 100%);
+    z-index: 0;
+}
+.circle-1 {
+    width: 150px;
+    height: 150px;
+    top: -75px;
+    right: -75px;
+}
+.circle-2 {
+    width: 100px;
+    height: 100px;
+    bottom: -50px;
+    left: -50px;
+}
+.divider {
+    height: 1px;
+    background: #e9ecef;
+    margin: 25px 0;
+}
+.medication-header {
+    background-color: #f1f3f5;
+    border-radius: 15px 15px 0 0;
+    padding: 12px 15px;
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #e9ecef;
+}
+/* Custom styling for time input */
+input[type="time"] {
+    padding: 12px 20px;
+    border-radius: 15px;
+    border: 2px solid #e9ecef;
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #495057;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+input[type="time"]:focus {
+    box-shadow: 0 0 0 0.25rem rgba(106, 17, 203, 0.25);
+    border-color: #6a11cb;
+    background-color: #fff;
+    outline: none;
+}
+/* Fix for some browsers that render time inputs differently */
+input[type="time"]::-webkit-calendar-picker-indicator {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    border-radius: 50%;
+    padding: 6px;
+    cursor: pointer;
+}

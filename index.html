@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Medication Management System</title>
+        <!-- Bootstrap CSS -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+        <!-- Bootstrap Icons -->
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="/style.css">
+    </head>
+    <body>
+        <div class="container py-4">
+            <div class="card mb-4">
+                <div class="card-header py-4 text-center">
+                    <div class="decoration-circle circle-1"></div>
+                    <div class="decoration-circle circle-2"></div>
+                    <i class="bi bi-capsule-pill section-icon"
+                        style="font-size: 3rem;"></i>
+                    <h3 class="mb-0">Medication Management</h3>
+                    <div class="pill-badge mt-2">Personal Health Assistant</div>
+                </div>
+                <div class="card-body p-4">
+                    <form id="medicationForm">
+                        <div class="form-section">
+                            <div class="row mb-4">
+                                <div class="col-md-4 mb-3 mb-md-0">
+                                    <label for="name" class="form-label">Full
+                                        Name</label>
+                                    <input type="text" class="form-control"
+                                        id="name"
+                                        placeholder="Enter your full name"
+                                        required>
+                                </div>
+                                <div class="col-md-4 mb-3 mb-md-0">
+                                    <label for="phone" class="form-label">Phone
+                                        Number</label>
+                                    <input type="tel" class="form-control"
+                                        id="phone"
+                                        placeholder="+923298421980"
+                                        required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="timezone" class="form-label">Timezone (UTC)</label>
+                                    <select class="form-control" id="timezone" required>
+                                        <option value="-12">UTC-12:00</option>
+                                        <option value="-11">UTC-11:00</option>
+                                        <option value="-10">UTC-10:00</option>
+                                        <option value="-9">UTC-09:00</option>
+                                        <option value="-8">UTC-08:00</option>
+                                        <option value="-7">UTC-07:00</option>
+                                        <option value="-6">UTC-06:00</option>
+                                        <option value="-5">UTC-05:00</option>
+                                        <option value="-4">UTC-04:00</option>
+                                        <option value="-3">UTC-03:00</option>
+                                        <option value="-2">UTC-02:00</option>
+                                        <option value="-1">UTC-01:00</option>
+                                        <option value="0">UTC+00:00</option>
+                                        <option value="+1">UTC+01:00</option>
+                                        <option value="+2">UTC+02:00</option>
+                                        <option value="+3">UTC+03:00</option>
+                                        <option value="+4">UTC+04:00</option>
+                                        <option value="+5" selected>UTC+05:00</option>
+                                        <option value="+6">UTC+06:00</option>
+                                        <option value="+7">UTC+07:00</option>
+                                        <option value="+8">UTC+08:00</option>
+                                        <option value="+9">UTC+09:00</option>
+                                        <option value="+10">UTC+10:00</option>
+                                        <option value="+11">UTC+11:00</option>
+                                        <option value="+12">UTC+12:00</option>
+                                        <option value="+13">UTC+13:00</option>
+                                        <option value="+14">UTC+14:00</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <div
+                                class="d-flex justify-content-between align-items-center mb-3">
+                                <div
+                                    class="medication-header w-100 d-flex justify-content-between align-items-center">
+                                    <div><i
+                                            class="bi bi-list-check me-2"></i>Medication
+                                        Details</div>
+                                    <button type="button"
+                                        class="btn btn-primary btn-sm"
+                                        id="addMedicationBtn">
+                                        <i
+                                            class="bi bi-plus-circle me-2"></i>Add
+                                        Medication
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div id="medicationContainer">
+                                <!-- Medication rows will be added here -->
+                                <div class="medication-row">
+                                    <button type="button"
+                                        class="btn btn-danger remove-row"
+                                        disabled>
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+
+                                    <div class="row">
+                                        <div class="col-md-4 mb-3 mb-md-0">
+                                            <label class="form-label">Medicine
+                                                Name</label>
+                                            <input type="text"
+                                                class="form-control medicine-name"
+                                                placeholder="Enter medicine name"
+                                                required>
+                                        </div>
+                                        <div class="col-md-4 mb-3 mb-md-0">
+                                            <label
+                                                class="form-label">Dosage</label>
+                                            <input type="text"
+                                                class="form-control dosage"
+                                                placeholder="Enter dosage (e.g., 10mg)"
+                                                required>
+                                        </div>
+                                        <div class="col-md-4 mb-3 mb-md-0">
+                                            <label
+                                                class="form-label">Time</label>
+                                            <input type="time" class="time"
+                                                required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-4 mb-4">
+                            <button type="button"
+                                class="btn btn-success btn-lg w-100 py-3"
+                                id="saveBtn">
+                                <i class="bi bi-save me-2"></i>Save Medication
+                                Plan
+                            </button>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <button type="button"
+                                    class="btn btn-primary w-100 py-3"
+                                    id="reminderBtn">
+                                    <i class="bi bi-bell me-2"></i>Get
+                                    Medication Reminder
+                                </button>
+                            </div>
+                            <div class="col-md-6">
+                                <button type="button"
+                                    class="btn btn-danger w-100 py-3"
+                                    id="distressBtn">
+                                    <i class="bi bi-telephone me-2"></i>Get
+                                    Distress Call
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <button type="button"
+                                class="btn btn-info btn-lg w-100 py-3"
+                                id="calendarBtn">
+                                <i class="bi bi-calendar-week me-2"></i>Show
+                                Calendar
+                            </button>
+                            <p class="mt-2 text-muted"><small>Note: Calendar will be displayed in UTC time, not your local time.</small></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Save Confirmation Modal -->
+        <div class="modal fade" id="saveModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"><i
+                                class="bi bi-check-circle me-2"></i>Success</h5>
+                        <button type="button" class="btn-close"
+                            data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center py-4">
+                        <i class="bi bi-check-circle-fill text-success"
+                            style="font-size: 4rem;"></i>
+                        <h4 class="mt-3">Data Saved Successfully!</h4>
+                        <p class="mb-0">Your medication plan has been saved.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary"
+                            data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call Confirmation Modal -->
+        <div class="modal fade" id="callModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"><i
+                                class="bi bi-telephone me-2"></i>Call
+                            Request</h5>
+                        <button type="button" class="btn-close"
+                            data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center py-4">
+                        <i class="bi bi-telephone-fill text-primary"
+                            style="font-size: 4rem;"></i>
+                        <h4 class="mt-3">Call Request Received</h4>
+                        <p class="mb-0">You will receive a call shortly.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary"
+                            data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Help Button -->
+        <button class="btn btn-primary btn-floating" id="helpBtn">
+            <i class="bi bi-question-lg"></i>
+        </button>
+
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <!-- Bootstrap JS Bundle with Popper -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+        <script>
+        $(document).ready(function() {
+            // Add medication row
+            $("#addMedicationBtn").click(function() {
+                const newRow = `
+                    <div class="medication-row">
+                        <button type="button" class="btn btn-danger remove-row">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                        
+                        <div class="row">
+                            <div class="col-md-4 mb-3 mb-md-0">
+                                <label class="form-label">Medicine Name</label>
+                                <input type="text" class="form-control medicine-name" placeholder="Enter medicine name" required>
+                            </div>
+                            <div class="col-md-4 mb-3 mb-md-0">
+                                <label class="form-label">Dosage</label>
+                                <input type="text" class="form-control dosage" placeholder="Enter dosage (e.g., 10mg)" required>
+                            </div>
+                            <div class="col-md-4 mb-3 mb-md-0">
+                                <label class="form-label">Time</label>
+                                <input type="time" class="time" required>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                $("#medicationContainer").append(newRow);
+                
+                // Enable all remove buttons if there's more than one row
+                if ($("#medicationContainer .medication-row").length > 1) {
+                    $(".remove-row").prop("disabled", false);
+                }
+                
+                // Add animation effect
+                const newRowElement = $("#medicationContainer .medication-row").last();
+                newRowElement.css('opacity', '0');
+                newRowElement.css('transform', 'translateY(20px)');
+                setTimeout(function() {
+                    newRowElement.css('transition', 'all 0.5s ease');
+                    newRowElement.css('opacity', '1');
+                    newRowElement.css('transform', 'translateY(0)');
+                }, 10);
+            });
+
+            // Remove medication row
+            $(document).on("click", ".remove-row", function() {
+                const row = $(this).closest(".medication-row");
+                
+                // Add animation effect
+                row.css('transition', 'all 0.5s ease');
+                row.css('opacity', '0');
+                row.css('transform', 'translateY(-20px)');
+                
+                setTimeout(function() {
+                    row.remove();
+                    
+                    // Disable the last remaining remove button
+                    if ($("#medicationContainer .medication-row").length === 1) {
+                        $(".remove-row").prop("disabled", true);
+                    }
+                }, 500);
+            });
+
+            // Save button click
+            $("#saveBtn").click(function() {
+                // Validate form
+                if (!validateForm()) {
+                    return;
+                }
+                
+                // Show save confirmation modal
+                $("#saveModal").modal("show");
+            });
+
+            // Reminder button click
+            $("#reminderBtn").click(function() {
+                // Get form values
+                const name = $("#name").val().trim();
+                const phone = $("#phone").val().trim();
+                
+                // Get first medication row details
+                const firstMedicineRow = $("#medicationContainer .medication-row").first();
+                const medicineName = firstMedicineRow.find(".medicine-name").val().trim();
+                const dosage = firstMedicineRow.find(".dosage").val().trim();
+                
+                // Validate required fields
+                if (!name || !phone || !medicineName || !dosage) {
+                    alert("Please fill in your name, phone number, and at least one medication details");
+                    return;
+                }
+                
+                // Show loading indicator
+                const originalText = $(this).html();
+                $(this).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...');
+                $(this).prop("disabled", true);
+                
+                // API call configuration
+                const headers = {
+                    'Authorization': 'org_a541cbf22e5d5cac59291c4e84ed1a9b694016785d7973c3ed39339cc40eb9abac4939df3ded1886eb1869',
+                    'encrypted_key': '29f35485-21a8-4b83-a510-859c4a8f5d33'
+                };
+                
+                // Create dynamic task prompt with user's information
+                const taskPrompt = `You are an AI assistant created by the Old Home to make friendly and supportive medicine reminder calls to our beloved members. Your goal is to call ${name} and gently remind them to take their medicine, ${medicineName}, ${dosage}, right now. You must ensure they take it during the call while being extremely kind, patient, respectful, and soft-spoken. Your purpose is to make ${name} feel comfortable, cared for, and at ease, treating them like a valued family member. You stay on the call until they confirm they've taken the medicine, and you never rush them. The call should feel warm, natural, and human-like, reflecting the love and care we have for our elderly members at the Old Home.
+            
+            Call Flow:
+            
+            Start with a warm, friendly introduction: "Hello, ${name}! This is [Your Name], calling from the Old Home. How are you doing today, dear? I hope you're feeling comfortable and well."
+            Transition gently to the reminder: "I'm just calling to check in on you and remind you about your medicine. Today, it's time to take your ${medicineName}, ${dosage}. It's just a little something to keep you feeling your best."
+            Give clear, gentle instructions: "Whenever you're ready, could you please take the ${dosage} of ${medicineName} now? I'll stay right here with you, no rush at all."
+            Wait patiently for confirmation. If ${name} hesitates or says they'll take it later, respond kindly: "I totally understand, ${name}, but it would really help you to take it now. I'm happy to wait with you—it's no trouble at all."
+            If they seem confused, repeat warmly: "It's just ${medicineName}, ${dosage}, dear. I'm here to make sure you've got it right—don't worry, we'll do it together."
+            If they stay silent, reassure them softly: "I'm still here, ${name}. Take your time—I'm in no hurry, and I'm happy to keep you company."
+            Once they confirm they've taken it, thank them and end positively: "Thank you so much, ${name}! You've done wonderfully. It's always a pleasure to talk with you. Take care, and I'll check in again soon. Have a lovely day, dear!"
+            
+            Background Information:
+            You represent the Old Home, a caring community dedicated to looking after our elderly members. ${name} is one of our cherished residents, and it's your job to ensure they take their prescribed medicine, ${medicineName}, ${dosage}, at the right time. Elderly members may sometimes forget or feel hesitant, so you must be extra gentle, patient, and supportive. Your tone should always be warm, respectful, and encouraging, like a kind friend or family member. Staying on the call until they take the medicine is critical to confirm they've followed through.
+            
+            Tone and Mannerisms:
+            You speak slowly, softly, and with a smile in your voice. Use terms like "dear" or "${name}, dear" naturally to show affection and care. Pause often to give ${name} time to respond, and never sound impatient. If they need encouragement, use phrases like "I'm right here with you" or "We'll do this together, no hurry." Always end with a cheerful, positive note to leave them feeling uplifted.`;
+                
+                // Data payload
+                const data = {
+                    "phone_number": phone,
+                    "voice": "June",
+                    "wait_for_greeting": false,
+                    "record": true,
+                    "answered_by_enabled": true,
+                    "noise_cancellation": false,
+                    "interruption_threshold": 100,
+                    "block_interruptions": false,
+                    "max_duration": 3,
+                    "model": "turbo",
+                    "language": "en",
+                    "background_track": "none",
+                    "endpoint": "https://api.bland.ai",
+                    "voicemail_action": "hangup",
+                    "task": taskPrompt,
+                    "from": "+17752548747"
+                };
+                
+                const self = $(this);
+                
+                // Make the API call
+                try {
+                    // Using fetch API instead of axios since you may not have axios included
+                    fetch('https://api.bland.ai/v1/calls', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            ...headers
+                        },
+                        body: JSON.stringify(data)
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log("API call successful:", data);
+                        // Show success message
+                        $("#callModal").modal("show");
+                    })
+                    .catch(error => {
+                        console.error("Error making API call:", error);
+                        alert("There was an error scheduling your reminder call. Please try again.");
+                    })
+                    .finally(() => {
+                        // Restore button state
+                        self.html(originalText);
+                        self.prop("disabled", false);
+                    });
+                } catch (error) {
+                    console.error("Error:", error);
+                    // Restore button state
+                    self.html(originalText);
+                    self.prop("disabled", false);
+                    alert("There was an error processing your request. Please try again.");
+                }
+            });
+
+            // Distress call button click
+            $("#distressBtn").click(function() {
+                // Get form values
+                const name = $("#name").val().trim();
+                const phone = $("#phone").val().trim();
+                const timezone = $("#timezone").val();
+                
+                // Validate required fields
+                if (!name || !phone) {
+                    alert("Please fill in your name and phone number");
+                    return;
+                }
+                
+                // Show loading indicator
+                const originalText = $(this).html();
+                $(this).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...');
+                $(this).prop("disabled", true);
+                
+                const self = $(this);
+                
+                // API call configuration
+                const headers = {
+                    'Authorization': 'org_a541cbf22e5d5cac59291c4e84ed1a9b694016785d7973c3ed39339cc40eb9abac4939df3ded1886eb1869',
+                    'encrypted_key': '29f35485-21a8-4b83-a510-859c4a8f5d33'
+                };
+                
+                // Data payload
+                const data = {
+                    "pathway_id": "17db52b3-6a7d-452d-8a48-2c878ac4b1d9",
+                    "from": "+17752548747",
+                    "phone_number": phone,
+                    "request_data": {
+                        "name": name,
+                        "timezone_offset": timezone
+                    },
+                    "voice": "June",
+                    "wait_for_greeting": false,
+                    "record": true,
+                    "max_duration": 3
+                };
+                
+                // Make the API call
+                $.ajax({
+                    url: 'https://api.bland.ai/v1/calls',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    headers: headers,
+                    data: JSON.stringify(data),
+                    success: function(response) {
+                        console.log("API call successful:", response);
+                        // Show success message
+                        $("#callModal").modal("show");
+                    },
+                    error: function(error) {
+                        console.error("Error making API call:", error);
+                        alert("There was an error scheduling your distress call. Please try again.");
+                    },
+                    complete: function() {
+                        // Restore button state
+                        self.html(originalText);
+                        self.prop("disabled", false);
+                    }
+                });
+            });
+
+            // Calendar button click
+            $("#calendarBtn").click(function() {
+                window.open("https://calendar.google.com/calendar/u/1?cid=dGVzdGRlbW8wMTU5MzUzMkBnbWFpbC5jb20", "_blank");
+            });
+            
+
+            // Help button click
+            $("#helpBtn").click(function() {
+                alert("Need help? Contact our support team at support@medmanager.com or call 1-800-MED-HELP");
+            });
+
+            // Function to validate form
+            function validateForm() {
+                let isValid = true;
+                
+                // Check if name and phone are filled
+                if ($("#name").val().trim() === "") {
+                    alert("Please enter your name");
+                    $("#name").focus();
+                    isValid = false;
+                    return isValid;
+                }
+                
+                if ($("#phone").val().trim() === "") {
+                    alert("Enter number eg : +923298421980");
+                    $("#phone").focus();
+                    isValid = false;
+                    return isValid;
+                }
+                
+                // Check if all medication fields are filled
+                $(".medication-row").each(function() {
+                    const medicineName = $(this).find(".medicine-name").val().trim();
+                    const dosage = $(this).find(".dosage").val().trim();
+                    const time = $(this).find(".time").val().trim();
+                    
+                    if (medicineName === "" || dosage === "" || time === "") {
+                        alert("Please fill all medication details");
+                        isValid = false;
+                        return false; // Break the loop
+                    }
+                });
+                
+                return isValid;
+            }
+
+            // Add subtle animations to sections on page load
+            $(".form-section").each(function(index) {
+                const section = $(this);
+                section.css('opacity', '0');
+                section.css('transform', 'translateY(20px)');
+                setTimeout(function() {
+                    section.css('transition', 'all 0.5s ease');
+                    section.css('opacity', '1');
+                    section.css('transform', 'translateY(0)');
+                }, 100 * index);
+            });
+        });
+    </script>
+    </body>
+</html>
